@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<!-- Zaki Kurdya, 120200706 -->
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zkurdya.chapter5homework.controller.MainScreenController">
+   <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="350.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+      <Tab fx:id="addTab" text="Add Student">
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="   Student ID   " textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="id" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Name" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="name" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Major" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="major" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Grade" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="grade" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="525.0">
+               <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNewStudent" prefHeight="35.0" prefWidth="230.0" stylesheets="@style.css" text="Add">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+         </VBox>
+      </Tab>
+      <Tab fx:id="editTab" text="Edit Student">
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="68.0" prefWidth="525.0" spacing="20.0">
+               <TextField fx:id="editSearch" prefHeight="36.0" prefWidth="229.0" promptText="Enter Student ID" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+               <Button fx:id="editSearchButton" mnemonicParsing="false" onAction="#editSearch" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" text="Search">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="   Student ID   " textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="idE" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Name" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="nameE" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Major" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="majorE" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="53.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student Grade" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="gradeE" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="525.0">
+               <Button fx:id="editButton" mnemonicParsing="false" onAction="#updateStudentData" prefHeight="35.0" prefWidth="230.0" stylesheets="@style.css" text="Edit">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+         </VBox>
+      </Tab>
+      <Tab fx:id="removeTab" text="Remove Student">
+         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="525.0" spacing="20.0">
+               <TextField fx:id="removeSearch" prefHeight="36.0" prefWidth="229.0" promptText="Enter Student ID" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+               <Button fx:id="removeSearchButton" mnemonicParsing="false" onAction="#removeSearch" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" text="Search">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="79.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student ID to be removed" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="removedId" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="525.0">
+               <Button fx:id="removeButton" mnemonicParsing="false" onAction="#deleteStudentById" prefHeight="35.0" prefWidth="230.0" stylesheets="@style.css" text="Remove">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+         </VBox>
+      </Tab>
+      <Tab fx:id="courseRegistrationTab" text="Course Registration">
+         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="525.0" spacing="20.0">
+               <TextField fx:id="registerSearch" prefHeight="36.0" prefWidth="229.0" promptText="Enter Student ID" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+               <Button fx:id="registerSearchButton" mnemonicParsing="false" onAction="#registerSearch" prefHeight="35.0" prefWidth="95.0" stylesheets="@style.css" text="Search">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="68.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="Student ID" textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="studentId" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="                   Course ID " textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <ComboBox fx:id="courseId" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </ComboBox>
+               <Button id="image-button" fx:id="showCourses" mnemonicParsing="false" onAction="#showAllCourses">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@show.png" />
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="525.0" style="-fx-spacing: 15;">
+               <Label text="  Semester " textAlignment="RIGHT">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <ComboBox fx:id="semester" prefHeight="36.0" prefWidth="229.0" stylesheets="@style.css">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </ComboBox>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="525.0">
+               <Button fx:id="registerButton" mnemonicParsing="false" onAction="#register" prefHeight="35.0" prefWidth="230.0" stylesheets="@style.css" text="Register">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <effect>
+                     <DropShadow blurType="GAUSSIAN" height="15.14" radius="3.285" width="0.0">
+                        <color>
+                           <Color opacity="0.2862595319747925" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </HBox>
+         </VBox>
+      </Tab>
+   </TabPane>
+   <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
+   </TableView>
+</HBox>
