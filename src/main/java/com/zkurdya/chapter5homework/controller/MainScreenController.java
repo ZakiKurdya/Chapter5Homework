@@ -1,7 +1,8 @@
 package com.zkurdya.chapter5homework.controller;
 
+import com.zkurdya.chapter5homework.model.Registration;
 import com.zkurdya.chapter5homework.model.Student;
-import com.zkurdya.chapter5homework.util.JpaUtil;
+import com.zkurdya.chapter5homework.util.JpaUtility;
 import javafx.beans.InvalidationListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,10 +26,6 @@ public class MainScreenController implements Initializable {
     private TextField registerSearch, studentId;
 
     @FXML
-    private Button addButton, editButton, editSearchButton, removeButton, removeSearchButton,
-                   registerButton, registerSearchButton, showCourses;
-
-    @FXML
     private ComboBox<String> courseId, semester;
 
     @FXML
@@ -36,7 +33,7 @@ public class MainScreenController implements Initializable {
     @FXML
     private Tab addTab, editTab, removeTab, courseRegistrationTab;
 
-    private final JpaUtil jpaUtil = new JpaUtil();
+    private final JpaUtility jpaUtility = new JpaUtility();
 
     @FXML
     private void addNewStudent() {
@@ -55,9 +52,9 @@ public class MainScreenController implements Initializable {
                 grade.setText("");
                 return;
             }
-            jpaUtil.save(newStudent);
+            jpaUtility.save(newStudent);
             tableView.getItems().clear();
-            tableView.getItems().addAll(jpaUtil.getAllStudents());
+            tableView.getItems().addAll(jpaUtility.getAllStudents());
         }
         id.setText("");
         name.setText("");
@@ -70,7 +67,7 @@ public class MainScreenController implements Initializable {
         if (!editSearch.getText().equals("")) {
             tableView.getItems().clear();
             try {
-                tableView.getItems().add(jpaUtil.getStudentById(Integer.parseInt(editSearch.getText())));
+                tableView.getItems().add(jpaUtility.getStudentById(Integer.parseInt(editSearch.getText())));
             } catch (NumberFormatException ignored) {}
         }
     }
@@ -100,9 +97,9 @@ public class MainScreenController implements Initializable {
                 gradeE.setText("");
                 return;
             }
-            jpaUtil.update(newStudent);
+            jpaUtility.updateStudent(newStudent);
             tableView.getItems().clear();
-            tableView.getItems().addAll(jpaUtil.getAllStudents());
+            tableView.getItems().addAll(jpaUtility.getAllStudents());
         }
         idE.setText("");
         nameE.setText("");
@@ -115,7 +112,7 @@ public class MainScreenController implements Initializable {
         if (!removeSearch.getText().equals("")) {
             tableView.getItems().clear();
             try {
-                tableView.getItems().addAll(jpaUtil.getStudentById(Integer.parseInt(removeSearch.getText())));
+                tableView.getItems().addAll(jpaUtility.getStudentById(Integer.parseInt(removeSearch.getText())));
             } catch (NumberFormatException ignored) {}
         }
     }
@@ -124,9 +121,11 @@ public class MainScreenController implements Initializable {
     private void deleteStudentById() {
         if (!removedId.getText().equals("")) {
             try {
-                jpaUtil.deleteStudentByID(Integer.parseInt(removedId.getText()));
+                Student student = jpaUtility.getStudentById(Integer.parseInt(removedId.getText()));
+                jpaUtility.deleteByStudentId(student);
+                jpaUtility.deleteStudentByID(Integer.parseInt(removedId.getText()));
                 tableView.getItems().clear();
-                tableView.getItems().addAll(jpaUtil.getAllStudents());
+                tableView.getItems().addAll(jpaUtility.getAllStudents());
             } catch (NumberFormatException ignored) {}
         }
     }
@@ -137,24 +136,25 @@ public class MainScreenController implements Initializable {
             getStudentTableSchema();
             tableView.getItems().clear();
             try {
-                tableView.getItems().addAll(jpaUtil.getStudentById(Integer.parseInt(registerSearch.getText())));
+                tableView.getItems().addAll(jpaUtility.getStudentById(Integer.parseInt(registerSearch.getText())));
             } catch (NumberFormatException ignored) {}
         }
     }
 
     @FXML
     private void register() {
-        /*if (!studentId.getText().equals("") &&
+        if (!studentId.getText().equals("") &&
             courseId.getSelectionModel().getSelectedItem() != null &&
             semester.getSelectionModel().getSelectedItem() != null) {
-            String registration = studentId.getText() + "#@" +
-                                  courseId.getSelectionModel().getSelectedItem() + "#@" +
-                                  semester.getSelectionModel().getSelectedItem();
-            DatabaseConnection.registerCourse(registration);
+            Registration registration = new Registration();
+            registration.setStudent(jpaUtility.getStudentById(Integer.valueOf(studentId.getText())));
+            registration.setCourse(jpaUtility.getCourseById(courseId.getSelectionModel().getSelectedItem()));
+            registration.setSemester(semester.getSelectionModel().getSelectedItem());
+            jpaUtility.save(registration);
         }
         studentId.setText("");
         courseId.getSelectionModel().clearSelection();
-        semester.getSelectionModel().clearSelection();*/
+        semester.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -168,13 +168,13 @@ public class MainScreenController implements Initializable {
         tableView.getColumns().clear();
         tableView.getColumns().addAll(id, name, room);
         tableView.getItems().clear();
-        tableView.getItems().addAll(jpaUtil.getAllCourses());
+        tableView.getItems().addAll(jpaUtility.getAllCourses());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getStudentTableSchema();
-       // tableView.getItems().addAll(jpaUtil.getAllStudents());
+        tableView.getItems().addAll(jpaUtility.getAllStudents());
 
         semester.getItems().addAll("First semester 2022/2023", "Second semester 2022/2023");
 
@@ -199,12 +199,12 @@ public class MainScreenController implements Initializable {
 
                     if (newTab == addTab || newTab == removeTab || newTab == editTab) {
                         tableView.getItems().clear();
-          //              tableView.getItems().addAll(jpaUtil.getAllStudents());
+                        tableView.getItems().addAll(jpaUtility.getAllStudents());
                     } else if (newTab == courseRegistrationTab) {
                         tableView.getItems().clear();
-              //          tableView.getItems().addAll(jpaUtil.getAllStudents());
+                        tableView.getItems().addAll(jpaUtility.getAllStudents());
                         courseId.getItems().clear();
-            //            courseId.getItems().addAll(jpaUtil.getCourses());
+                        courseId.getItems().addAll((Collection<? extends String>) jpaUtility.getCourses());
                     }
                 }
         );
