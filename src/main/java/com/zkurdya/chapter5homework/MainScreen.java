@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class MainScreen extends Application {
@@ -20,7 +19,7 @@ public class MainScreen extends Application {
             stage.setTitle("Student Management System");
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("students.png"))));
             stage.show();
-        } catch (IOException ignored) {}
+        } catch (Exception ignored) {}
     }
 
     public static void main(String[] args) {
