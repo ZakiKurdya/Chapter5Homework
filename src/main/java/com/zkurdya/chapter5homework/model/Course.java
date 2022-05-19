@@ -5,7 +5,8 @@ import java.util.Objects;
 
 @NamedQueries({
         @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
-        @NamedQuery(name = "Course.findAllIds", query = "SELECT id FROM Course")
+        @NamedQuery(name = "Course.findCourseById", query = "SELECT c FROM Course c WHERE c.id = :id"),
+        @NamedQuery(name = "Course.findCourseIds", query = "SELECT c.id FROM Course c")
 })
 @Entity
 @Table(name = "Course")
@@ -27,28 +28,16 @@ public class Course {
         this.room = room;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getId() {
+        return id;
     }
 
     public String getRoom() {
         return room;
-    }
-
-    public void setRoom(String room) {
-        this.room = room;
     }
 
     @Override
